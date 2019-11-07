@@ -27,3 +27,5 @@ style属性，他的值必须接受对象 <h6 style={{color:'pink'}}>{[11,22,33]
         return <li key={key}>{obj[key]}</li>;
     })}
 </ol>
+## 组件
+拥有独立功能的模块
