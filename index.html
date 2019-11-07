@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        #oH1 {
+            color: greenyellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+      const name='xialilin';
+      const users=[
+          {name:'夏丽林',sex:'女',hobby:'上网'},
+          {name:'常心月',sex:'女',hobby:'打篮球'},
+          {name:'云川',sex:'男',hobby:'吃东西'},
+          {name:'Ann',sex:'女',hobby:'冲浪'}
+      ];
+      const arr=['常心月','Janice','Ann'];
+      const obj={left:400,right:300};
+      ReactDOM.render(
+        <div>
+            <h1 id="oH1">Hello React!</h1>
+            <h2 id={name} className="oH2">啦啦啦...</h2>
+            <h3>{11*11}</h3>
+            <h4>{'hello janice'}</h4>
+            <h5>{true}</h5>
+            <h5>{undefined}</h5>
+            <h5>{null}</h5>
+            <h5>{/*left:100*/}</h5>
+            <h6 style={{color:'pink'}}>{[11,22,33]}</h6>
+            <ul>
+                {
+                    // 根据数组中的内容生成包含有结构的新数组
+                    users.map((item,index)=>{
+                        return <li key={index}>
+                                    <div>{item.name}</div>
+                                    <div>{item.sex}</div>
+                                    <div>{item.hobby}</div>
+                               </li>
+                    })
+                }
+            </ul>
+            <ol>
+                    {Object.keys(obj).map((key)=>{
+                        return <li key={key}>{obj[key]}</li>;
+                    })}
+            </ol>
+        </div>,
+          document.getElementById('root')
+      );
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script type="text/babel">
+      const users=[
+          {name:'夏丽林',sex:'女',hobby:'上网'},
+          {name:'常心月',sex:'女',hobby:'打篮球'},
+          {name:'云川',sex:'男',hobby:'吃东西'},
+          {name:'Ann',sex:'女',hobby:'冲浪'}
+      ];
+      const arr1=['常心月','Janice','Ann'];
+      const arr2=['张三','李四','王五'];
+
+      function list(arr) {
+        {
+            // 根据数组中的内容生成包含有结构的新数组
+            arr.map((item,index)=>{
+                return <li key={index}>
+                            {item}
+                        </li>
+            })
+        }
+      }
+
+      ReactDOM.render(
+        <div>
+            <ul>
+                {
+                    // 根据数组中的内容生成包含有结构的新数组
+                    arr1.map((item,index)=>{
+                        return <li key={index}>
+                                    {item}
+                               </li>
+                    })
+                }
+            </ul>
+
+            <ol>
+                {list(arr2)}
+            </ol>
+        </div>,
+          document.getElementById('app')
+      );
+
+    </script>
+</body>
+
+</html>
