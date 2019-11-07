@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>通过类实现--->组件化ES6语法</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script type="text/babel">
+      const users=[
+          {name:'夏丽林',sex:'女',hobby:'上网'},
+          {name:'常心月',sex:'女',hobby:'打篮球'},
+          {name:'云川',sex:'男',hobby:'吃东西'},
+          {name:'Ann',sex:'女',hobby:'冲浪'}
+      ];
+      const arr1=['常心月','Janice','Ann'];
+      const arr2=['张三','李四','王五'];
+
+      class List extends React.Component{
+        render(){
+            return this.props.data.map((item,index)=>{
+                return <li key={index}>{item}</li>;
+            });
+        }
+      }
+
+      ReactDOM.render(
+        <div>
+            <ul>
+                <List data={arr1} />
+            </ul>
+
+            <ol>
+                <List data={arr2} />
+            </ol>
+        </div>,
+          document.getElementById('app')
+      );
+
+    </script>
+</body>
+
+</html>

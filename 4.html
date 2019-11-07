@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>QQ列表</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="./js/data.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .panel {
+            width: 600px;
+            margin: auto;
+        }
+
+        .group {
+            border: 1px solid #ccc;
+            margin-top: 20px;
+            line-height: 24px;
+        }
+
+        .group h2 {
+            font-weight: normal;
+            font-size: 16px;
+            background: #ccc;
+            height: 32px;
+            line-height: 32px;
+            padding: 0 20px;
+        }
+
+        .item{
+            padding: 10px 20px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .item:last-child{
+            border-bottom: none;
+        }
+
+        .vip{
+            color: orangered;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <script type="text/babel">
+        const app=document.querySelector('#app');
+        const dataList=dataList;
+
+        class Item extends React.Component{
+            render(){
+                return (
+                    <div className="item">
+                        <div className={this.props.data.vip?'vip':''}>{this.props.data.username}</div>
+                        <div className={this.props.data.vip?'vip':''}>
+                            {this.props.data.message}
+                        </div>
+                    </div>
+                )
+            }
+        }
+        
+        class Group extends React.Component{
+            render(){
+                return (
+                    <div className="group">
+                        <h2>{this.props.data.name}</h2>
+                        {
+                            this.props.data.list.map((item,index)=>{
+                                return <Item key={index} data={item} />;
+                            })
+                        }
+                    </div>
+                )
+            }
+        }
+
+        class Panel extends React.Component{
+            render(){
+                return (
+                    <div className="panel">
+                        {
+                            Object.keys(this.props.data).map((key,index)=>{
+                                return <Group key={index} data={this.props.data[key]}/>;
+                            })
+                        }
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(
+            <Panel data={dataList}/>,
+            app
+        );
+    </script>
+</body>
+
+</html>
