@@ -12,46 +12,7 @@
     <!-- Don't use this in production: -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src="./js/data.js"></script>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
-
-        .panel {
-            width: 600px;
-            margin: auto;
-        }
-
-        .group {
-            border: 1px solid #ccc;
-            margin-top: 20px;
-            line-height: 24px;
-        }
-
-        .group h2 {
-            font-weight: normal;
-            font-size: 16px;
-            background: #ccc;
-            height: 32px;
-            line-height: 32px;
-            padding: 0 20px;
-        }
-
-        .item{
-            padding: 10px 20px;
-            border-bottom: 1px solid #ccc;
-        }
-
-        .item:last-child{
-            border-bottom: none;
-        }
-
-        .vip{
-            color: orangered;
-        }
-
-    </style>
+    <link rel="stylesheet" href="./styles/qq.css">
 </head>
 
 <body>
@@ -76,6 +37,7 @@
         
         class Group extends React.Component{
             render(){
+                console.log(this.props);
                 return (
                     <div className="group">
                         <h2>{this.props.data.name}</h2>
