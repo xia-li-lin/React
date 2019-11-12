@@ -21,43 +21,101 @@
     <script type="text/babel">
         const app=document.querySelector('#app');
         const dataList=dataList;
-
+        const show=false;
         class Item extends React.Component{
             render(){
                 return (
-                    <div className="item">
-                        <div className={this.props.data.vip?'vip':''}>{this.props.data.username}</div>
-                        <div className={this.props.data.vip?'vip':''}>
-                            {this.props.data.message}
-                        </div>
-                    </div>
-                )
-            }
-        }
-        
-        class Group extends React.Component{
-            render(){
-                console.log(this.props);
-                return (
-                    <div className="group">
-                        <h2>{this.props.data.name}</h2>
+                    <div>
                         {
-                            this.props.data.list.map((item,index)=>{
-                                return <Item key={index} data={item} />;
+                            this.props.data.map((item,index)=>{
+                                return (
+                                    <div className="item" key={index}>
+                                        <div className={item.vip?'vip':''}>{item.username}</div>
+                                        <div className={item.vip?'vip':''}>
+                                            {item.message}
+                                        </div>
+                                    </div>
+                                )
                             })
                         }
                     </div>
                 )
             }
         }
+        
+        class Group extends React.Component{
+            constructor(){
+                super(...arguments);
+                this.state={
+                    show:this.props.show
+                }
+            }
+
+            changeList(){
+                // console.log(this);
+                let show=!this.state.show;
+                this.setState({
+                    show
+                });
+                if(show){
+                    this.props.onChange(this.props.index);
+                }
+            }
+
+            shouldCompomemtUpdate(nextProps,nextState){
+                if(this.state.show!=nextProps.show){
+                    
+                }
+                return true;
+            }
+
+            render(){
+                // console.log(this.state.show);
+                return (
+                    <div className="group">
+                        <h2 onClick={this.changeList.bind(this)}>{this.props.data.name}</h2>
+                        {this.state.show?<Item data={this.props.data.list}/>:''}
+                    </div>
+                )
+            }
+        }
 
         class Panel extends React.Component{
+            constructor(){
+                super(...arguments);
+                this.state={
+                    showList:[true,false,false]
+                }
+                this.changeList=this.changeList.bind(this);
+            }
+
+            changeList(i){
+                // console.log(i);     // 需要让当前第几个显示
+                let showList=this.state.showList.map((item,index)=>{
+                    if(i===index){
+                        return true;
+                    }
+                    return false;
+                });
+                console.log(showList);
+                this.setState({
+                    showList
+                })
+            }
+
             render(){
                 return (
                     <div className="panel">
                         {
                             Object.keys(this.props.data).map((key,index)=>{
-                                return <Group key={index} data={this.props.data[key]}/>;
+                                return (
+                                    <Group key={index} 
+                                           index={index}
+                                           show={this.state.showList[index]} 
+                                           data={this.props.data[key]} 
+                                           onChange={this.changeList}
+                                    />
+                                );
                             })
                         }
                     </div>
