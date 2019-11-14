@@ -66,3 +66,21 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+### 安装装饰器插件,同时在package.json文件中也要配置
+
+npm install @babel/plugin-proposal-decorators --save-dev
+如下：
+"babel": {
+    "presets": [
+      "react-app"
+    ],
+    "plugins": [
+      [
+        "@babel/plugin-proposal-decorators",
+        {
+          "legacy": true
+        }
+      ]
+    ]
+  }
