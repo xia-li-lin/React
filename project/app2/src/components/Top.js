@@ -11,5 +11,8 @@ export default class Top extends Component {
 }
 
 function TopBar(props){
-    return <div className="top">{props.user.name}</div>
+    return <div className="top">
+            <h1>Top</h1>
+            {props.user.name}
+           </div>
 }

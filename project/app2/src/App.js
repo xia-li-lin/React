@@ -2,7 +2,8 @@ import React from 'react';
 import { Provider } from './AppContext';
 // import HomePage from './pages/HomePage';
 // import HocPage from './pages/HocPage';
-import Decorators from './pages/Decorators';
+// import Decorators from './pages/Decorators';
+import UserPage from './pages/UserPage';
 
 // function Child(props) {
 //   return <div>
@@ -26,7 +27,8 @@ function App() {
         {/* <Consumer>{ctx => <HomePage {...ctx} />}</Consumer> */}
         {/* <HomePage/> */}
         {/* <HocPage /> */}
-        <Decorators/>
+        {/* <Decorators/> */}
+        <UserPage/>
       </Provider>
     </div>
   );
