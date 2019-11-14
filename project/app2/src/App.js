@@ -1,24 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// import HomePage from './pages/HomePage';
+import { Provider } from './AppContext';
+import HocPage from './pages/HocPage';
+
+// function Child(props) {
+//   return <div>
+//     <h1>Context</h1>
+//     <p>{props.user.name}</p>
+//   </div>;
+// }
+
+const store = {
+  user: {
+    name: '夏丽林'
+  }
+}
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* <Child {...store} /> */}
+      <Provider value={store}>
+        {/* <Consumer>{ctx => <Child {...ctx} />}</Consumer> */}
+        {/* <Consumer>{ctx => <HomePage {...ctx} />}</Consumer> */}
+        {/* <HomePage/> */}
+        <HocPage />
+      </Provider>
     </div>
   );
 }
